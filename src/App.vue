@@ -1,33 +1,46 @@
 <template>
-<h1>{{this.aegis}}</h1>
+<div>
+<Background class="background-component">
+
+</Background>
+<div class="content">
+Hello There
+<h1>
+Welcome to my website
+</h1>
+</div>
+</div>
 </template>
 <script>
-import axios from 'axios'
-
+import Background from './components/Background.vue'
 export default {
     props:{},
-    components:{},
+    components:{Background},
     data(){
      return {
-        aegis:null
      }
  
     },
 
 
-mounted(){
- 
- axios
-      .get('https://pokeapi.co/api/v2/pokemon-species/aegislash')
-      .then(response=> {console.log(this.aegis=response.data.base_happiness)})
 
-
-  
-}
 
 }
 </script>
 
-<style>
+<style scoped>
 
+.background-component{
+position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place it behind other content */
+  }
+  .content{
+  position:relative;
+  z-index:1;
+  color:black;
+  }
 </style>
